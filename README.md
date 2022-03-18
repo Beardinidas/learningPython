@@ -3,12 +3,12 @@
 All projects have been created with Python v3.10  
 
 # Completed
+Guess the Number Game (User)  
+Guess the Number Game (Computer)
 
 
 # TODO
 Mad Libs  
-Guess the Number Game (computer)  
-Guess the Number Game (user)  
 Rock, paper, scissors  
 Hangman  
 Countdown Timer  

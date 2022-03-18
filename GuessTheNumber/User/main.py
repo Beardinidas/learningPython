@@ -9,14 +9,14 @@ randomMax = 1000
 userGuesses = []
 
 def main():
-	"Generate a Random Interger"
+	#Generate a Random Interger
 	randomNumber = random.randint(randomMin, randomMax)
 
-	"Initialise userGuess to 0"
+	#Initialise userGuess to 0
 	userGuess = 0
 	lastGuess = 'No Guesses have been Made'
 
-	"Loop Until Correct Guess"
+	#Loop Until Correct Guess
 	while userGuess != randomNumber:
 		clearConsole()
 
@@ -36,7 +36,7 @@ def main():
 			print("Too High")
 			lastGuess = "Too High"
 
-	"If Correct Guess is Made"
+	#If Correct Guess is Made
 	clearConsole()
 	print(f"You Have Guessed the Correct Number: {randomNumber} in {len(userGuesses)} Guesses")
 

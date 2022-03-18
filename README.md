@@ -1,5 +1,6 @@
 # learningPython
 
+All projects have been created with Python v3.10  
 
 # Completed
 

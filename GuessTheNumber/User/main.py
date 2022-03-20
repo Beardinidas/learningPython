@@ -8,6 +8,7 @@ randomMax = 1000
 
 userGuesses = []
 
+
 def main():
 	#Generate a Random Interger
 	randomNumber = random.randint(randomMin, randomMax)
@@ -38,7 +39,8 @@ def main():
 
 	#If Correct Guess is Made
 	clearConsole()
-	print(f"You Have Guessed the Correct Number: {randomNumber} in {len(userGuesses)} Guesses")
+	print(f'You Have Guessed the Correct Number: {randomNumber} in ' \
+		f'{len(userGuesses)} Guesses')
 
 
 

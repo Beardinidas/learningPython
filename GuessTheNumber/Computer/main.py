@@ -9,6 +9,7 @@ computerGuesses = []
 underLineS = "\033[4m"
 underLineE = "\033[0m"
 
+
 def main():
 	randomMin = 1
 	randomMax = 1000
@@ -24,7 +25,8 @@ def main():
 		if randomMin != randomMax:
 			guess = random.randint(randomMin, randomMax)
 		else:
-			guess = randomMax #This can also be randomMin as it is the same as randomMax 
+			#This can also be randomMin as it matches randomMax
+			guess = randomMax
 
 		clearConsole()
 
@@ -35,13 +37,14 @@ def main():
 
 		#Alter Min, Max Values Depending if Guess is Too Low or Too High
 		if guessFeedback == 'H':
-			randomMax = guess-1
+			randomMax = guess - 1
 			computerGuesses.append(guess)
 		elif guessFeedback == "L":
-			randomMin = guess+1
+			randomMin = guess + 1
 			computerGuesses.append(guess)
 
-	print(f"Computer Has Guessed Your Number, {guess} Correctly in {len(computerGuesses)} Guesses")
+	print(f'Computer Has Guessed Your Number {guess} Correctly in ' \
+		f'{len(computerGuesses)} Guesses')
 
 
 def clearConsole():

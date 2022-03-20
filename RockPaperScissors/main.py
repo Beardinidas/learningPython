@@ -4,12 +4,6 @@ import random
 import os
 
 
-totalGames = 0
-totalGamesPlayed = 0
-userWins = 0
-computerWins = 0
-
-
 class Style():
 	RESET = '\033[0m'
 	RED = '\033[31m'
@@ -17,6 +11,11 @@ class Style():
 	YELLOW = '\033[33m'
 	BLUE = '\033[34m'
 
+
+class Scores():
+	gamesWon = 0
+	gamesLost = 0
+	gamesTied = 0
 
 def main():
 	#Select Game Version to Play
@@ -28,8 +27,10 @@ def main():
 
 		if gameVersion == 1:
 			classicGame()
+			break
 		elif gameVersion == 2:
 			bigBang()
+			break
 		else:
 			clearConsole()
 			print('Please Enter a Valid Selection')
@@ -37,27 +38,56 @@ def main():
 
 
 def classicGame():
-	#Logic for Classic RPS
+	#Setup Classic
 	clearConsole()
 	print(Style.YELLOW + 'Rock Paper Scirros' + Style.RESET)
 	rules('Classic')
 	input(Style.BLUE + 'Press Enter to Continue...' + Style.RESET)
 	clearConsole()
 
+	print(Style.YELLOW + 'Rock Paper Scissors' + Style.RESET)
+	totalGames = int(input('How Many Games to Play?: '))
+	playGame('Classic', totalGames)
+
 
 def bigBang():
-	#Logic for BigBang
+	#Setup BigBang
 	clearConsole()
 	print(Style.YELLOW + 'Big Bang' + Style.RESET)
 	rules('BigBang')
 	input(Style.BLUE + 'Press Enter to Continue...' + Style.RESET)
 	clearConsole()
 
+	print(Style.YELLOW + 'Big Bang' + Style.RESET)
+	totalGames = int(input('How Many Games to Play?: '))
+	playGame('BigBang', totalGames)
 
 
-def playGame(gameType):
-	return 0
+def playGame(gameType, totalGames):
+	#Play Game
+	clearConsole()
+	playerScores = Scores()
+	computerScores = Scores()
 
+	if gameType == 'Classic':
+		print(f'Playing {totalGames} Games of {gameType} Rock Paper Scissors')
+		input('Press Enter to Continue...')
+		clearConsole()
+
+		for game in range(1, totalGames + 1, 1):
+			clearConsole()
+			print(f'Playing Game {game} of {totalGames}')
+			#TODO
+
+	if gameType == 'BigBang':
+		print(f'Playing {totalGames} Games of Sheldon\'s Rock Paper Scissors')
+		input('Press Enter to Continue...')
+		clearConsole()
+
+		for game in rang(1, totalGames + 1, 1):
+			clearConsole()
+			print(f'Playing Game {game} of {totalGames}')
+			#TODO
 
 
 def rules(gameType):

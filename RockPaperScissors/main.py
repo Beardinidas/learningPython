@@ -132,25 +132,47 @@ def gameCalculations(choices, totalGames):
 		elif computerAction == 'scissors':
 			print(Style.GREEN + 'Rock smashes Scissors!' + Style.RESET)
 			playerScores.gamesWon = playerScores.gamesWon + 1
-			gamesLost = computerScores.gamesLost + 1
+			computerScoores.gamesLost = computerScores.gamesLost + 1
 		elif computerAction == 'lizard':
-			print(Style.GREEN + 
-	elif userAction == 'paper':
-		if computerAction == "rock":
-			print('Paper covers Rock! You Win!')
-			playerScores.gamesWon = playerScores.GamesWon + 1
-			computerScores.gamesLost = computerScores.GamesLost + 1
-		else:
-			print('Scissors cuts Paper! You Lose!')
-			playerScores.gamesLost = playerScores.gamesLost + 1
-			computerScores.gamesWon = computerScores.gamesWon + 1
-	elif userAction == 'scissors':
-		if computerAction == "paper":
-			print('Scissors cuts Paper! You Win!')
+			print(Style.GREEN + 'Rock crushes Lizard!' + Style.RESET)
 			playerScores.gamesWon = playerScores.gamesWon + 1
 			computerScores.gamesLost = computerScores.gamesLost + 1
 		else:
-			print('Rock smashes Scissors! You Lose!')
+			print(Style.RED + 'Spock vaporizes Rock!' Style.RESET)
+			playerScores.gamesLost = player.gamesLost + 1
+			computerScores.gamesWon = computerScores.gamesWon + 1
+	elif userAction == 'paper':
+		if computerAction == 'rock':
+			print(Style.GREEN + 'Paper covers Rock!' + Style.RESET)
+			playerScores.gamesWon = playerScores.GamesWon + 1
+			computerScores.gamesLost = computerScores.GamesLost + 1
+		elif computerAction == 'scissors':
+			print(Style.RED + 'Scissors cuts Paper!' + Style.RESET)
+			playerScores.gamesLost = playerScores.gamesLost + 1
+			computerScores.gamesWon = computerScores.gamesWon + 1
+		elif computerAction == 'lizard'
+			print(Style.RED + 'Lizard eats Paper!' + Style.RESET
+			playerScores.gamesLost = playerScores.gamesLost + 1
+			computerScores.gamesWon = computerScores.gamesWon + 1
+		else:
+			print(Style.GREEN + 'Paper disaproves Spock!' + Style.RESET
+			playerScores.gamesWon = playerScores.gamesWon + 1
+			computerScores.gamesLost = computerScores.gamesLost + 1
+	elif userAction == 'scissors':
+		if computerAction 'rock':
+			print(Style.RED + 'Rock smashes Scissors!' + Style.RESET
+			playerScores.gamesLost = playerScores.gamesLost + 1
+			computerScores.gamesWon = computerScores.gamesWon + 1
+		elif computerAction == 'paper':
+			print(Style.GREEN + 'Scissors cuts Paper!' Style.RESET)
+			playerScores.gamesWon = playerScores.gamesWon + 1
+			computerScores.gamesLost = computerScores.gamesLost + 1
+		elif computerAction == 'lizard'
+			print(Style.GREEN + 'Scissors decapitates Lizard!' + Style.RESET)
+			playerScores.gamesWon = playerScores.gamesWon + 1
+			computerScores.gamesLost = computerScores.GamesLost + 1
+		else:
+			print(Style.RED + 'Spock smashes Scissors!' + Style.RESET)
 			playerScores.gamesLost = playerScores.gamesLost + 1
 			computerScores.gamesWon = computerScores.gamesWon + 1
 	elif userAction == 'lizard':

@@ -1,6 +1,6 @@
 # learningPython
 
-All projects have been created with Python v3.10  
+All projects have been created with Python v3.10 and assuming you hav python3 as your default python interpreter 
 
 # Completed
 Guess the Number Game (User)  

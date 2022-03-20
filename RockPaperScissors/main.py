@@ -132,7 +132,7 @@ def gameCalculations(choices, totalGames):
 			elif computerAction == 'scissors':
 				print(Style.GREEN + 'Rock smashes Scissors!' + Style.RESET)
 				playerScores.gamesWon = playerScores.gamesWon + 1
-				computerScoores.gamesLost = computerScores.gamesLost + 1
+				computerScores.gamesLost = computerScores.gamesLost + 1
 			elif computerAction == 'lizard':
 				print(Style.GREEN + 'Rock crushes Lizard!' + Style.RESET)
 				playerScores.gamesWon = playerScores.gamesWon + 1

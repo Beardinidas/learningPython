@@ -4,12 +4,13 @@ All projects have been created with Python v3.10 and assuming you hav python3 as
 
 # Completed
 Guess the Number Game (User)  
-Guess the Number Game (Computer)
+Guess the Number Game (Computer)  
+Rock, Paper, Scissors  
+
 
 
 # TODO
 Mad Libs  
-Rock, paper, scissors  
 Hangman  
 Countdown Timer  
 Password Generator  

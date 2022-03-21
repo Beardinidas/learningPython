@@ -5,12 +5,12 @@ import os
 
 
 class Style:
-        RESET = '\033[0m'
-        RED = '\033[31m'
-        GREEN = '\033[32m'
-        YELLOW = '\033[33m'
-        BLUE = '\033[34m'
-        underLine = '\033[4m'
+	RESET = '\033[0m'
+	RED = '\033[31m'
+	GREEN = '\033[32m'
+	YELLOW = '\033[33m'
+	BLUE = '\033[34m'
+	underLine = '\033[4m'
 
 
 class Scores:
@@ -37,9 +37,12 @@ class Scores:
 	def getGamesTied(self):
 		return self.gamesTied
 
+game = ''
 
 playerScores = Scores(0, 0, 0)
 computerScores = Scores(0, 0, 0)
+classicChoices = ['rock', 'paper', 'scissors']
+bigBangChoices = ['rock', 'paper', 'scissors', 'lizard', 'spock']
 
 
 def main():
@@ -51,53 +54,41 @@ def main():
 			'Selection: '))
 
 		if gameVersion == 1:
+			game = 'Classic'
 			classicGame()
 			break
 		elif gameVersion == 2:
+			game = 'BigBang'
 			bigBang()
 			break
 		else:
 			clearConsole()
 			print('Please Enter a Valid Selection')
 			main()
-
-
-	userTotalWins = playerScores.getGamesWon
-	computerTotalWins = computerScores.getGamesWon
-
-	if userTotalWins.getGamesWon > computerTotalWins.getGamesWon:
-		print(Style.GREEN + 'You Have Won!' + Style.Reset)
-	elif computerTotalWins.getGamesWon > userTotalWins.getGamesWon:
-		print(Style.RED + 'You Have Lose!' + Style.Reset)
-	else:
-		print(Style.YELLOW + 'It\'s a Tie' + Style.Reset)
+	endGame()
 
 
 def classicGame():
         #Setup Classic
 	clearConsole()
 
-	#Choices tat are applicable
-	choices = ['rock', 'paper', 'scissors']
 	print(Style.YELLOW + 'Rock Paper Scirrors' + Style.RESET)
 	print(Style.BLUE + '\nRULES' + Style.RESET)
 	rules('Classic')
 	totalGames = int(input('How Many Games to Play?: '))
 	input('Press Enter to Continue...')
-	playGame('Classic', choices, totalGames)
+	playGame('Classic', classicChoices, totalGames)
 
 def bigBang():
         #Setup BigBang
 	clearConsole()
 
-	#Choices that are applicable 
-	choices = ['rock', 'paper', 'scissors', 'lizard', 'spock']
 	print(Style.YELLOW + 'Big Bang' + Style.RESET)
 	print(Style.BLUE + '\nRULES' + Style.RESET)
 	rules('BigBang')
 	totalGames = int(input('How Many Games to Play?: '))
 	input('Press Enter to Continue...')
-	playGame('BigBang', choices, totalGames)
+	playGame('BigBang', bigBangChoices, totalGames)
 
 def playGame(gameType, choices, totalGames):
         clearConsole()
@@ -111,42 +102,66 @@ def playGame(gameType, choices, totalGames):
                 gameCalculations(choices, totalGames)
 
 
+def endGame():
+	clearConsole()
+	userTotalWins = playerScores.getGamesWon()
+	computerTotalWins = computerScores.getGamesWon()
+
+	#If User Wins Display They Have Won
+	if userTotalWins > computerTotalWins:
+		print(Style.GREEN + 'You Have Won!' + Style.RESET)
+	#If Computer Wins, Display User Has Lost
+	if computerTotalWins > userTotalWins:
+		print(Style.RED + 'You Have Lost!' + Style.RESET)
+	#If Tied
+	if userTotalWins == computerTotalWins:
+		print(Style.YELLOW + 'Game is a Tie' + Style.RESET)
+
+	currentScores()
+
 def rules(gameType):
-        #Define Rules for Game Types
-        if gameType == 'Classic':
-                print(Style.GREEN + 'Rock' + Style.RESET + ' beats ' + Style.RED + 'Scissors \n' \
-                        + Style.GREEN + 'Paper' + Style.RESET + ' beats ' + Style.RED + 'Rock \n' \
-                        + Style.GREEN + 'Scissors' + Style.RESET + ' beats ' + Style.RED + 'Paper \n\n' + Style.RESET)
-        if gameType == 'BigBang':
-                print(Style.GREEN + 'Scissors' + Style.RESET + ' cuts ' + Style.RED + 'Paper \n' \
-                        + Style.GREEN + 'Paper' + Style.RESET + ' covers ' + Style.RED + 'Rock \n' \
-                        + Style.GREEN + 'Rock' + Style.RESET + ' crushes ' + Style.RED + 'Lizard \n' \
-                        + Style.GREEN + 'Lizard' + Style.RESET + ' poisons ' + Style.RED + 'Spock \n' \
-                        + Style.GREEN + 'Spock' + Style.RESET + ' smashes ' + Style.RED + 'Scissors \n' \
-                        + Style.GREEN + 'Scissors' + Style.RESET + ' decapites ' + Style.RED + 'Lizard \n' \
-                        + Style.GREEN + 'Lizard' + Style.RESET + ' eats ' + Style.RED + 'Paper \n' \
-                        + Style.GREEN + 'Paper' + Style.RESET + ' disaproves ' + Style.RED + 'Spock \n' \
-                        + Style.GREEN + 'Spock' + Style.RESET + ' vaporizes ' + Style.RED + 'Rock \n' \
-                        + Style.RESET + 'And as it always has \n' \
-                        + Style.GREEN + 'Rock' + Style.RESET + ' crushes ' + Style.RED + 'Scissors \n\n' + Style.RESET)
+	#Define Rules for Game Types
+	if gameType == 'Classic':
+		print(Style.GREEN + 'Rock' + Style.RESET + ' beats ' + Style.RED + 'Scissors \n' \
+			+ Style.GREEN + 'Paper' + Style.RESET + ' beats ' + Style.RED + 'Rock \n' \
+			+ Style.GREEN + 'Scissors' + Style.RESET + ' beats ' + Style.RED + 'Paper \n\n' + Style.RESET)
+		print(f'To make a move, type in \'rock, paper or scissors\' in all {Style.underLine}lowercase{Style.RESET}')
+	if gameType == 'BigBang':
+		print(Style.GREEN + 'Scissors' + Style.RESET + ' cuts ' + Style.RED + 'Paper \n' \
+			+ Style.GREEN + 'Paper' + Style.RESET + ' covers ' + Style.RED + 'Rock \n' \
+			+ Style.GREEN + 'Rock' + Style.RESET + ' crushes ' + Style.RED + 'Lizard \n' \
+			+ Style.GREEN + 'Lizard' + Style.RESET + ' poisons ' + Style.RED + 'Spock \n' \
+			+ Style.GREEN + 'Spock' + Style.RESET + ' smashes ' + Style.RED + 'Scissors \n' \
+			+ Style.GREEN + 'Scissors' + Style.RESET + ' decapites ' + Style.RED + 'Lizard \n' \
+			+ Style.GREEN + 'Lizard' + Style.RESET + ' eats ' + Style.RED + 'Paper \n' \
+			+ Style.GREEN + 'Paper' + Style.RESET + ' disaproves ' + Style.RED + 'Spock \n' \
+			+ Style.GREEN + 'Spock' + Style.RESET + ' vaporizes ' + Style.RED + 'Rock \n' \
+			+ Style.RESET + 'And as it always has \n' \
+			+ Style.GREEN + 'Rock' + Style.RESET + ' crushes ' + Style.RED + 'Scissors \n\n' + Style.RESET)
+		print(f'To make a move, type in \'rock, paper scissors, lizard or spock\' in all {Style.underLine}lowercase{Style.RESET}')
+
 
 
 def gameCalculations(choices, totalGames):
-	for game in range(1, totalGames + 1, 1):
+	for gameNumber in range(1, totalGames + 1, 1):
 		clearConsole()
 
-		print(f'Playing Game {game} of {totalGames}')
+		print(f'Playing Game {gameNumber} of {totalGames}')
 
 		userAction = input('Please Enter Your Move: ')
 		computerAction = random.choice(choices)
 
 		clearConsole()
 
+		#Displays what User and Computers actions are
 		print(f'User: {userAction}')
 		print(f'Computer: {computerAction}')
 
+
+		#Logic to disply Users action against Computer and what the outcome is
+		#Updates Wins, Losses and Ties for each game outcome that is played
 		if userAction == computerAction:
-			print('It is a Tie')
+			print(Style.YELLOW + 'It\'s a Tie' + Style.RESET)
 			playerScores.gameTied()
 			computerScores.gameTied()
 		elif userAction == 'rock':
@@ -235,21 +250,14 @@ def gameCalculations(choices, totalGames):
 				playerScores.gameLost()
 				computerScores.gameWon()
 
-		currentScores()
-
+		input()
 
 
 def currentScores():
-	input()
-	print(Style.YELLOW + 'Player Scores' + Style.RESET)
-	print('Games Won: ' + Style.GREEN + str(playerScores.getGamesWon()) + Style.RESET)
-	print('Games Lost: ' + Style.RED + str(playerScores.getGamesLost()) + Style.RESET)
-	print('Games Tied: ' + Style.YELLOW + str(playerScores.getGamesTied()) + Style.RESET)
-
-	print(Style.YELLOW + 'Computer Scores' + Style.RESET)
-	print('Games Won: ' + Style.GREEN + str(computerScores.getGamesWon()) + Style.RESET)
-	print('Games Lost: ' + Style.RED + str(computerScores.getGamesLost()) + Style.RESET)
-	print('Games Tied: ' + Style.YELLOW + str(computerScores.getGamesTied()) + Style.RESET)
+	print(Style.YELLOW + 'Player Scores\t\t\tComputer Scores' + Style.RESET)
+	print('Games Won: ' + Style.GREEN + str(playerScores.getGamesWon()) + Style.RESET + '\t\t\tGames Won: ' + Style.GREEN + str(computerScores.getGamesWon()) + Style.RESET)
+	print('Games Lost: ' + Style.RED + str(playerScores.getGamesLost()) + Style.RESET + '\t\t\tGames Lost: ' + Style.RED + str(computerScores.getGamesLost()) + Style.RESET)
+	print('Games Tied: ' + Style.YELLOW + str(playerScores.getGamesTied()) + Style.RESET + '\t\t\tGames Tied: ' + Style.YELLOW + str(computerScores.getGamesTied()) + Style.RESET)
 
 	input('Press Enter to Continue...')
 

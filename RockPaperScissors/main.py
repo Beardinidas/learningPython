@@ -132,9 +132,13 @@ def gameCalculations(choices, totalGames):
 
 		print(f'Playing Game {game} of {totalGames}')
 
-		userAction = input('Please Enter Your Move: ').lower
+		userAction = input('Please Enter Your Move: ')
 		computerAction = random.choice(choices)
-		print(f'Computer Picks: {computerAction}')
+
+		clearConsole()
+
+		print(f'User: {userAction}')
+		print(f'Computer: {computerAction}')
 
 		if userAction == computerAction:
 			print('It is a Tie')

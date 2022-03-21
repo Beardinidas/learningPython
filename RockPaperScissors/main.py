@@ -14,18 +14,33 @@ class Style:
 
 
 class Scores:
-	def stats(self):
-		print(f'Games Won: {self.gamesWon}')
-		print(f'Games Lost: {self.gamesLost}')
-		print(f'Games Tied: {self.gamesTied}')
+	def __init__(self, gamesWon, gamesLost, gamesTied):
+		self.gamesWon = gamesWon
+		self.gamesLost = gamesLost
+		self.gamesTied = gamesTied
 
-	gamesWon = 0
-	gamesLost = 0
-	gamesTied = 0
+	def gameWon(self):
+		self.gamesWon += 1
+
+	def gameLost(self):
+		self.gamesLost += 1
+
+	def gameTied(self):
+		self.gamesTied += 1
+
+	def getGamesWon(self):
+		return self.gamesWon
+
+	def getGamesLost(self):
+		return self.gamesLost
+
+	def getGamesTied(self):
+		return self.gamesTied
 
 
-playerScores = Scores()
-computerScores = Scores()
+playerScores = Scores(0, 0, 0)
+computerScores = Scores(0, 0, 0)
+
 
 def main():
         #Select Game Version to Play
@@ -119,109 +134,113 @@ def gameCalculations(choices, totalGames):
 
 		userAction = input('Please Enter Your Move: ').lower
 		computerAction = random.choice(choices)
+		print(f'Computer Picks: {computerAction}')
 
 		if userAction == computerAction:
-			print('It\'s a Tie')
-			playerScores.gamesTied = playerScores.gamesTied + 1
-			computer.Scores.gamesTied = computerScores.gamesTied + 1
+			print('It is a Tie')
+			playerScores.gameTied()
+			computerScores.gameTied()
 		elif userAction == 'rock':
 			if computerAction == 'paper':
 				print(Style.RED + 'Paper covers Rock!' + Style.RESET)
-				playerScores.gamesLost = playerScores.gamesLost + 1
-				computerScores.gamesWon = computerScores.gamesWon + 1
+				playerScores.gameLost()
+				computerScores.gameWon()
 			elif computerAction == 'scissors':
 				print(Style.GREEN + 'Rock smashes Scissors!' + Style.RESET)
-				playerScores.gamesWon = playerScores.gamesWon + 1
-				computerScores.gamesLost = computerScores.gamesLost + 1
+				playerScores.gameWon()
+				computerScores.gameLost()
 			elif computerAction == 'lizard':
 				print(Style.GREEN + 'Rock crushes Lizard!' + Style.RESET)
-				playerScores.gamesWon = playerScores.gamesWon + 1
-				computerScores.gamesLost = computerScores.gamesLost + 1
+				playerScores.gameWon()
+				computerScores.gameLost()
 			else:
 				print(Style.RED + 'Spock vaporizes Rock!' + Style.RESET)
-				playerScores.gamesLost = player.gamesLost + 1
-				computerScores.gamesWon = computerScores.gamesWon + 1
+				playerScores.gameLost()
+				computerScores.gameWon()
 		elif userAction == 'paper':
 			if computerAction == 'rock':
 				print(Style.GREEN + 'Paper covers Rock!' + Style.RESET)
-				playerScores.gamesWon = playerScores.GamesWon + 1
-				computerScores.gamesLost = computerScores.GamesLost + 1
+				playerScores.gameWon()
+				computerScores.gameLost()
 			elif computerAction == 'scissors':
 				print(Style.RED + 'Scissors cuts Paper!' + Style.RESET)
-				playerScores.gamesLost = playerScores.gamesLost + 1
-				computerScores.gamesWon = computerScores.gamesWon + 1
+				playerScores.gameLost()
+				computerScores.gameWon()
 			elif computerAction == 'lizard':
 				print(Style.RED + 'Lizard eats Paper!' + Style.RESET)
-				playerScores.gamesLost = playerScores.gamesLost + 1
-				computerScores.gamesWon = computerScores.gamesWon + 1
+				playerScores.gameLost()
+				computerScores.gameWon()
 			else:
 				print(Style.GREEN + 'Paper disaproves Spock!' + Style.RESET)
-				playerScores.gamesWon = playerScores.gamesWon + 1
-				computerScores.gamesLost = computerScores.gamesLost + 1
+				playerScores.gameWon()
+				computerScores.gameLost()
 		elif userAction == 'scissors':
 			if computerAction == 'rock':
 				print(Style.RED + 'Rock smashes Scissors!' + Style.RESET)
-				playerScores.gamesLost = playerScores.gamesLost + 1
-				computerScores.gamesWon = computerScores.gamesWon + 1
+				playerScores.gameLost()
+				computerScores.gameWon()
 			elif computerAction == 'paper':
 				print(Style.GREEN + 'Scissors cuts Paper!' + Style.RESET)
-				playerScores.gamesWon = playerScores.gamesWon + 1
-				computerScores.gamesLost = computerScores.gamesLost + 1
+				playerScores.gameWon()
+				computerScores.gameLost()
 			elif computerAction == 'lizard':
 				print(Style.GREEN + 'Scissors decapitates Lizard!' + Style.RESET)
-				playerScores.gamesWon = playerScores.gamesWon + 1
-				computerScores.gamesLost = computerScores.GamesLost + 1
+				playerScores.gameWon()
+				computerScores.gameLost()
 			else:
 				print(Style.RED + 'Spock smashes Scissors!' + Style.RESET)
-				playerScores.gamesLost = playerScores.gamesLost + 1
-				computerScores.gamesWon = computerScores.gamesWon + 1
+				playerScores.gameLost()
+				computerScores.gameWon()
 		elif userAction == 'lizard':
 			if computerAction == 'rock':
 				print(Style.RED + 'Rock crushes Lizard' + Style.RESET)
-				playerScores.gamesLost = playerScores.gamesLost + 1
-				computerScores.gamesWon = computerScores.gamesWon + 1
+				playerScores.gameLost()
+				computerScores.gameWon()
 			elif computerAction == 'paper':
 				print(Style.RED + 'Lizard  eats Paper!' + Style.RESET)
-				playerScores.gamesLost = playerScores.gamesLost + 1
-				computerScores.gamesWon = computerScores.gamesWon + 1
+				playerScores.gameLost()
+				computerScores.gameWon()
 			elif computerAction == 'scissors':
 				print(Style.RED + 'Scissors decapitates Lizard!' + Style.RESET)
-				playerScores.GamesLost = playerScores.gamesLost + 1
-				computerScores.gamesWon = computerScores.gamesWon + 1
+				playerScores.GameLost()
+				computerScores.gameWon()
 			else:
 				print(Style.GREEN + 'Lizard poisons Spock' + Style.RESET)
-				playerScores.gamesWon = playerScores.gamesWon + 1
-				computerScores.gamesLost = computerScores.gamesLost + 1
+				playerScores.gameWon()
+				computerScores.gameLost()
 		elif userAction == 'spock':
 			if computerAction == 'rock':
 				print(Style.GREEN + 'Spock vaporizes Rock!' + Style.RESET)
-				playerScores.gamesWon = playerScores.gamesWon + 1
-				computerScores.gamesLost = computerScores.gamesLost + 1
+				playerScores.gameWon()
+				computerScores.gameLost()
 			elif computerAction == 'paper':
 				print(Style.RED + 'Paper disaproves Spock!' + Style.RESET)
-				playerScores.gamesLost = playerScores.gamesLost + 1
-				computerScores.gamesWon = computerScores.gamesWon + 1
+				playerScores.gameLost()
+				computerScores.gameWon()
 			elif computerAction == 'scissors':
 				print(Style.GREEN + 'Spock smashes Scissors!' + Style.RESET)
-				playerScores.gamesWon = playerScores.gamesWon + 1
-				computerScores.gamesLost = computerScores.gamesLost + 1
+				playerScores.gameWon()
+				computerScores.gameLost()
 			else:
 				print(Style.RED + 'Lizard poisons Spock!' + Style.RESET)
-				playerScores.gamesLost = playerScores.gamesLost + 1
-				computerScores.gamesWon = computerScores.gamesWon + 1
+				playerScores.gameLost()
+				computerScores.gameWon()
 
 		currentScores()
 
 
 
 def currentScores():
-	print(Style.YELLOW + 'Current Scores \n' + Style.RESET)
+	input()
+	print(Style.YELLOW + 'Player Scores' + Style.RESET)
+	print('Games Won: ' + Style.GREEN + str(playerScores.getGamesWon()) + Style.RESET)
+	print('Games Lost: ' + Style.RED + str(playerScores.getGamesLost()) + Style.RESET)
+	print('Games Tied: ' + Style.YELLOW + str(playerScores.getGamesTied()) + Style.RESET)
 
-	print('Player Scores')
-	playerScores.stats()
-
-	print('Computer Scores')
-	computerScores.stats()
+	print(Style.YELLOW + 'Computer Scores' + Style.RESET)
+	print('Games Won: ' + Style.GREEN + str(computerScores.getGamesWon()) + Style.RESET)
+	print('Games Lost: ' + Style.RED + str(computerScores.getGamesLost()) + Style.RESET)
+	print('Games Tied: ' + Style.YELLOW + str(computerScores.getGamesTied()) + Style.RESET)
 
 	input('Press Enter to Continue...')
 

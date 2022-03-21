@@ -44,55 +44,60 @@ computerScores = Scores(0, 0, 0)
 
 def main():
         #Select Game Version to Play
-        gameVersion = 0
-        while gameVersion != 1 or gameVersion != 2:
-                gameVersion = int(input('1: Classic Rock, Paper, Scissors \n' \
-                        '2: Rock, Paper, Scissors, Lizard, Spock \n' \
-                        'Selection: '))
+	gameVersion = 0
+	while gameVersion != 1 or gameVersion != 2:
+		gameVersion = int(input('1: Classic Rock, Paper, Scissors \n' \
+			'2: Rock, Paper, Scissors, Lizard, Spock \n' \
+			'Selection: '))
 
-                if gameVersion == 1:
-                        classicGame()
-                        break
-                elif gameVersion == 2:
-                        bigBang()
-                        break
-                else:
-                        clearConsole()
-                        print('Please Enter a Valid Selection')
-                        main()
+		if gameVersion == 1:
+			classicGame()
+			break
+		elif gameVersion == 2:
+			bigBang()
+			break
+		else:
+			clearConsole()
+			print('Please Enter a Valid Selection')
+			main()
+
+
+	userTotalWins = playerScores.getGamesWon
+	computerTotalWins = computerScores.getGamesWon
+
+	if userTotalWins.getGamesWon > computerTotalWins.getGamesWon:
+		print(Style.GREEN + 'You Have Won!' + Style.Reset)
+	elif computerTotalWins.getGamesWon > userTotalWins.getGamesWon:
+		print(Style.RED + 'You Have Lose!' + Style.Reset)
+	else:
+		print(Style.YELLOW + 'It\'s a Tie' + Style.Reset)
 
 
 def classicGame():
         #Setup Classic
-        clearConsole()
+	clearConsole()
 
 	#Choices tat are applicable
-        choices = ['rock', 'paper', 'scissors']
-        print(Style.YELLOW + 'Rock Paper Scirrors' + Style.RESET)
-        rules('Classic')
-        input(Style.BLUE + 'Press Enter to Continue...' + Style.RESET)
-        clearConsole()
-
-        print(Style.YELLOW + 'Rock Paper Scissors' + Style.RESET)
-        totalGames = int(input('How Many Games to Play?: '))
-        playGame('Classic', choices, totalGames)
-
+	choices = ['rock', 'paper', 'scissors']
+	print(Style.YELLOW + 'Rock Paper Scirrors' + Style.RESET)
+	print(Style.BLUE + '\nRULES' + Style.RESET)
+	rules('Classic')
+	totalGames = int(input('How Many Games to Play?: '))
+	input('Press Enter to Continue...')
+	playGame('Classic', choices, totalGames)
 
 def bigBang():
         #Setup BigBang
-        clearConsole()
+	clearConsole()
 
 	#Choices that are applicable 
-        choices = ['rock', 'paper', 'scissors', 'lizard', 'spock']
-        print(Style.YELLOW + 'Big Bang' + Style.RESET)
-        rules('BigBang')
-        input(Style.BLUE + 'Press Enter to Continue...' + Style.RESET)
-        clearConsole()
-
-        print(Style.YELLOW + 'Big Bang' + Style.RESET)
-        totalGames = int(input('How Many Games to Play?: '))
-        playGame('BigBang', choices, totalGames)
-
+	choices = ['rock', 'paper', 'scissors', 'lizard', 'spock']
+	print(Style.YELLOW + 'Big Bang' + Style.RESET)
+	print(Style.BLUE + '\nRULES' + Style.RESET)
+	rules('BigBang')
+	totalGames = int(input('How Many Games to Play?: '))
+	input('Press Enter to Continue...')
+	playGame('BigBang', choices, totalGames)
 
 def playGame(gameType, choices, totalGames):
         clearConsole()
@@ -111,7 +116,7 @@ def rules(gameType):
         if gameType == 'Classic':
                 print(Style.GREEN + 'Rock' + Style.RESET + ' beats ' + Style.RED + 'Scissors \n' \
                         + Style.GREEN + 'Paper' + Style.RESET + ' beats ' + Style.RED + 'Rock \n' \
-                        + Style.GREEN + 'Scissors' + Style.RESET + ' beats ' + Style.RED + 'Paper \n\n')
+                        + Style.GREEN + 'Scissors' + Style.RESET + ' beats ' + Style.RED + 'Paper \n\n' + Style.RESET)
         if gameType == 'BigBang':
                 print(Style.GREEN + 'Scissors' + Style.RESET + ' cuts ' + Style.RED + 'Paper \n' \
                         + Style.GREEN + 'Paper' + Style.RESET + ' covers ' + Style.RED + 'Rock \n' \
@@ -123,7 +128,7 @@ def rules(gameType):
                         + Style.GREEN + 'Paper' + Style.RESET + ' disaproves ' + Style.RED + 'Spock \n' \
                         + Style.GREEN + 'Spock' + Style.RESET + ' vaporizes ' + Style.RED + 'Rock \n' \
                         + Style.RESET + 'And as it always has \n' \
-                        + Style.GREEN + 'Rock' + Style.RESET + ' crushes ' + Style.RED + 'Scissors \n\n')
+                        + Style.GREEN + 'Rock' + Style.RESET + ' crushes ' + Style.RED + 'Scissors \n\n' + Style.RESET)
 
 
 def gameCalculations(choices, totalGames):

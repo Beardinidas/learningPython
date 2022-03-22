@@ -57,7 +57,7 @@ dict = PyDictionary()
 wordlist = list()
 correctGuesses = []
 incorrectGuesses = []
-currentGuessState = ''
+currentWord = ''
 
 def main():
 	#Import List of Words
@@ -88,9 +88,17 @@ def playGame(secret):
 	charsInSecret = list(secret)
 
 	life = 0
+	currentHangState = ''
+
 	while life < len(HANGMAN):
-		print(Style.YELLOW + 'HANGMAN\n' + Style.RESET)
+		clearConsole()
+		print(Style.YELLOW + 'HANGMAN' + Style.RESET)
+		print(Style.RED + currentHangState + Style.RESET)
+		print(Style.GREEN + str(correctGuesses) + Style.RESET)
+		print(Style.RED + str(incorrectGuesses) + Style.RESET)
+
 		#Get Input From Uses
+		getGuessState(True, secret)
 		guess = input("Please Enter a Guess: ")
 
 		if guess in correctGuesses:
@@ -101,18 +109,27 @@ def playGame(secret):
 			if guess in charsInSecret:
 				#IF CHARACTER IN SECRET
 				correctGuesses.append(guess)
-				input('You Have Guessed a Correct Letter!')
-				getGuessState(guess)
+				input(Style.GREEN + 'You Have Guessed a CORRECT Letter!' + Style.RESET)
+				getGuessState(False, secret)
 			else:
 				#IF CHARACTER NOT IN SECRET
 				incorrectGuesses.append(guess)
-				print(Style.RED + HANGMAN[life] + Style.RESET)
-				input(f'Guess {guess} Is Not Correct')
+				input(Style.RED + f'Sorry, {guess} is INCORRECT' + Style.RESET)
+				currentHangState = HANGMAN[life]
 				life += 1
 
 
-def getGuessState(guess):
-	#TODO Guess State displaying Current Corect Guesses in positions
+def getGuessState(isFirstGuess, secret):
+	secretLength = len(secret)
+	displayBlanks = '_' * secretLength
+
+	if isFirstGuess == True:
+		#Print _ Based on Charactes in Word
+		print(displayBlanks)
+	else:
+		#PRINT CORRECT GUESS IN WORD IN CORRECT PLACE
+		print('TEST')
+
 
 
 def clearConsole():

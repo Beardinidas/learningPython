@@ -8,11 +8,10 @@ Guess the Number Game (User)
 Guess the Number Game (Computer)  
 Rock, Paper, Scissors  
 Hangman  (python v3.9)  
-
+MadLibs  
 
 
 # TODO
-Mad Libs   
 Countdown Timer  
 Password Generator  
 QR code encoder / decoder  

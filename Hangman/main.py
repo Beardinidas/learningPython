@@ -88,15 +88,14 @@ def playGame(secret):
 
 	while life < len(HANGMAN) and currentWord != secret:
 		clearConsole()
-		print(secret)
-		print(Style.YELLOW + 'HANGMAN' + Style.RESET)
-		print(Style.RED + currentHangState + Style.RESET)
+		print(f'{Style.YELLOW}HANGMAN{Style.RESET}')
+		print(f'{Style.RED}{currentHangState}{Style.RESET}')
 
 		#Prints Current State of Secret with Correctly Guessed Charactes and Blanks
 		getGuessState(secret)
 
-		print(Style.GREEN + str(correctGuesses) + Style.RESET)
-		print(Style.RED + str(incorrectGuesses) + Style.RESET)
+		print(f'{Style.GREEN}{str(correctGuesses)}{Style.RESET}')
+		print(f'{Style.RED}{str(incorrectGuesses)}{Style.RESET}')
 
 
 		#Get Input From Uses
@@ -104,19 +103,19 @@ def playGame(secret):
 
 		if guess in correctGuesses:
 			getGuessState(secret)
-			input(f'You Have Already Guessed {guess} which was ' + Style.GREEN + 'CORRECT!' + Style.RESET)
+			input(f'You Have Already Guessed {guess} which was {Style.GREEN}CORRECT!{Style.RESET}')
 		elif guess in incorrectGuesses:
 			getGuessState(secret)
-			input(f'You Have Already {guess} which was ' + Style.RED + 'INCORRECT!' + Style.RESET)
+			input(f'You Have Already {guess} which was {Style.RED}INCORRECT!{Style.RESET}')
 		else:
 			if guess in charsInSecret:
 				#If Guess Appears In Secret
 				correctGuesses.append(guess)
-				input(Style.GREEN + 'You Have Guessed a CORRECT Letter!' + Style.RESET)
+				input(f'{Style.GREEN}You Have Guessed a CORRECT Letter!{Style.RESET}')
 			else:
 				#Ic Guess Does Not Appear In Secret
 				incorrectGuesses.append(guess)
-				input(Style.RED + f'Sorry ' + guess + ' is INCORRECT' + Style.RESET)
+				input(f'{Style.RED}Sorry, {guess} is INCORRECT!{Style.RESET}')
 				currentHangState = HANGMAN[life]
 				life += 1
 		#Updates Current Word to Check If Guess is Correct

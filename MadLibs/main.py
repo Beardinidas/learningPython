@@ -53,14 +53,14 @@ def main():
 	verb3 = input('Please Enter a Verb: ')
 	adj4 = input('Please Enter an Adjective: ')
 	body2 = input('Please Enter a Body Part: ')
-	currency = input('Please Enter A Currency [50p, pound, quarter, etc]: ')
+	currency = input('Please Enter A Currency: ')
 
 	clearConsole()
 
 	madLib = letterFrom.format(noun1,year,name1,occu,place1,num,adj1,country,verb1,noun2,place2,adj2,noun3,verb2,noun4,adj3,name2,noun5,body1,verb3,adj4,body2,currency)
 
-	print(Style.YELLOW + 'MADLIBS' + Style.RESET)
-	print(Style.GREEN + f'A Letter from {name1} ' + Style.RESET)
+	print(f'{Style.YELLOW}MADLIBS{Style.RESET}')
+	print(f'{Style.GREEN}A Letter from {name1}{Style.RESET}')
 
 	print(madLib)
 

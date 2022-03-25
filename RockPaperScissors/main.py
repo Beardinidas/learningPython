@@ -72,8 +72,8 @@ def classicGame():
         #Setup Classic
 	clearConsole()
 
-	print(Style.YELLOW + 'Rock Paper Scirrors' + Style.RESET)
-	print(Style.BLUE + '\nRULES' + Style.RESET)
+	print(f'{Style.YELLOW}Rock Paper Scirrors{Style.RESET}')
+	print(f'{Style.BLUE}\nRULES{Style.RESET}')
 	rules('Classic')
 	totalGames = int(input('How Many Games to Play?: '))
 	input('Press Enter to Continue...')
@@ -83,8 +83,8 @@ def bigBang():
         #Setup BigBang
 	clearConsole()
 
-	print(Style.YELLOW + 'Big Bang' + Style.RESET)
-	print(Style.BLUE + '\nRULES' + Style.RESET)
+	print(f'{Style.YELLOW}Big Bang{Style.RESET}')
+	print(f'{Style.BLUE}\nRULES{Style.RESET}')
 	rules('BigBang')
 	totalGames = int(input('How Many Games to Play?: '))
 	input('Press Enter to Continue...')
@@ -109,35 +109,35 @@ def endGame():
 
 	#If User Wins Display They Have Won
 	if userTotalWins > computerTotalWins:
-		print(Style.GREEN + 'You Have Won!' + Style.RESET)
+		print(f'{Style.GREEN}You Have Won!{Style.RESET}')
 	#If Computer Wins, Display User Has Lost
 	if computerTotalWins > userTotalWins:
-		print(Style.RED + 'You Have Lost!' + Style.RESET)
+		print(f'{Style.RED}You Have Lost!{Style.RESET}')
 	#If Tied
 	if userTotalWins == computerTotalWins:
-		print(Style.YELLOW + 'Game is a Tie' + Style.RESET)
+		print(f'{Style.YELLOW}Game is a Tie{Style.RESET}')
 
 	currentScores()
 
 def rules(gameType):
 	#Define Rules for Game Types
 	if gameType == 'Classic':
-		print(Style.GREEN + 'Rock' + Style.RESET + ' beats ' + Style.RED + 'Scissors \n' \
-			+ Style.GREEN + 'Paper' + Style.RESET + ' beats ' + Style.RED + 'Rock \n' \
-			+ Style.GREEN + 'Scissors' + Style.RESET + ' beats ' + Style.RED + 'Paper \n\n' + Style.RESET)
+		print(f'{Style.GREEN}Rock{Style.RESET} beats {Style.RED}Scissors{Style.RESET} \n' \
+			+ f'{Style.GREEN}Paper{Style.RESET} beats {Style.RED}Rock{Style.RESET} \n' \
+			+ f'{Style.GREEN}Scissors{Style.RESET} beats {Style.RED}Paper{Style.RESET} \n\n')
 		print(f'To make a move, type in \'rock, paper or scissors\' in all {Style.underLine}lowercase{Style.RESET}')
 	if gameType == 'BigBang':
-		print(Style.GREEN + 'Scissors' + Style.RESET + ' cuts ' + Style.RED + 'Paper \n' \
-			+ Style.GREEN + 'Paper' + Style.RESET + ' covers ' + Style.RED + 'Rock \n' \
-			+ Style.GREEN + 'Rock' + Style.RESET + ' crushes ' + Style.RED + 'Lizard \n' \
-			+ Style.GREEN + 'Lizard' + Style.RESET + ' poisons ' + Style.RED + 'Spock \n' \
-			+ Style.GREEN + 'Spock' + Style.RESET + ' smashes ' + Style.RED + 'Scissors \n' \
-			+ Style.GREEN + 'Scissors' + Style.RESET + ' decapites ' + Style.RED + 'Lizard \n' \
-			+ Style.GREEN + 'Lizard' + Style.RESET + ' eats ' + Style.RED + 'Paper \n' \
-			+ Style.GREEN + 'Paper' + Style.RESET + ' disaproves ' + Style.RED + 'Spock \n' \
-			+ Style.GREEN + 'Spock' + Style.RESET + ' vaporizes ' + Style.RED + 'Rock \n' \
-			+ Style.RESET + 'And as it always has \n' \
-			+ Style.GREEN + 'Rock' + Style.RESET + ' crushes ' + Style.RED + 'Scissors \n\n' + Style.RESET)
+		print(f'{Style.GREEN}Scissors{Style.RESET} cuts {Style.RED}Paper{Style.RESET} \n' \
+			+ f'{Style.GREEN}Paper{Style.RESET} covers {Style.RED}Rock{Style.RESET} \n' \
+			+ f'{Style.GREEN}Rock{Style.RESET} crushes {Style.RED}Lizard{Style.RESET} \n' \
+			+ f'{Style.GREEN}Lizard{Style.RESET} poisons {Style.RED}Spock{Style.RESET} \n' \
+			+ f'{Style.GREEN}Spock{Style.RESET} smashes {Style.RED}Scissors{Style.RESET} \n' \
+			+ f'{Style.GREEN}Scissors{Style.RESET} decapites {Style.RED}Lizard{Style.RESET} \n' \
+			+ f'{Style.GREEN}Lizard{Style.RESET} eats {Style.RED}Paper{Style.RESET} \n' \
+			+ f'{Style.GREEN}Paper{Style.RESET} disaproves {Style.RED}Spock{Style.RESET} \n' \
+			+ f'{Style.GREEN}Spock{Style.RESET} vaporizes {Style.RED}Rock{Style.RESET} \n' \
+			+ f'And as it always has \n' \
+			+ f'{Style.GREEN}Rock{Style.RESET} crushes {Style.RED}Scissors{Style.RESET} \n\n')
 		print(f'To make a move, type in \'rock, paper scissors, lizard or spock\' in all {Style.underLine}lowercase{Style.RESET}')
 
 
@@ -161,92 +161,92 @@ def gameCalculations(choices, totalGames):
 		#Logic to disply Users action against Computer and what the outcome is
 		#Updates Wins, Losses and Ties for each game outcome that is played
 		if userAction == computerAction:
-			print(Style.YELLOW + 'It\'s a Tie' + Style.RESET)
+			print(f'{Style.YELLOW}It\'s a Tie{Style.RESET}')
 			playerScores.gameTied()
 			computerScores.gameTied()
 		elif userAction == 'rock':
 			if computerAction == 'paper':
-				print(Style.RED + 'Paper covers Rock!' + Style.RESET)
+				print(f'{Style.RED}Paper covers Rock!{Style.RESET}')
 				playerScores.gameLost()
 				computerScores.gameWon()
 			elif computerAction == 'scissors':
-				print(Style.GREEN + 'Rock smashes Scissors!' + Style.RESET)
+				print(f'{Style.GREEN}Rock smashes Scissors!{Style.RESET}')
 				playerScores.gameWon()
 				computerScores.gameLost()
 			elif computerAction == 'lizard':
-				print(Style.GREEN + 'Rock crushes Lizard!' + Style.RESET)
+				print(f'{Style.GREEN}Rock crushes Lizard!{Style.RESET}')
 				playerScores.gameWon()
 				computerScores.gameLost()
 			else:
-				print(Style.RED + 'Spock vaporizes Rock!' + Style.RESET)
+				print(f'{Style.RED}Spock vaporizes Rock!{Style.RESET}')
 				playerScores.gameLost()
 				computerScores.gameWon()
 		elif userAction == 'paper':
 			if computerAction == 'rock':
-				print(Style.GREEN + 'Paper covers Rock!' + Style.RESET)
+				print(f'{Style.GREEN}Paper covers Rock!{Style.RESET}')
 				playerScores.gameWon()
 				computerScores.gameLost()
 			elif computerAction == 'scissors':
-				print(Style.RED + 'Scissors cuts Paper!' + Style.RESET)
+				print(f'{Style.RED}Scissors cuts Paper!{Style.RESET}')
 				playerScores.gameLost()
 				computerScores.gameWon()
 			elif computerAction == 'lizard':
-				print(Style.RED + 'Lizard eats Paper!' + Style.RESET)
+				print(f'{Style.RED}Lizard eats Paper!{Style.RESET}')
 				playerScores.gameLost()
 				computerScores.gameWon()
 			else:
-				print(Style.GREEN + 'Paper disaproves Spock!' + Style.RESET)
+				print(f'{Style.GREEN}Paper disaproves Spock!{Style.RESET}')
 				playerScores.gameWon()
 				computerScores.gameLost()
 		elif userAction == 'scissors':
 			if computerAction == 'rock':
-				print(Style.RED + 'Rock smashes Scissors!' + Style.RESET)
+				print(f'{Style.RED}Rock smashes Scissors!{Style.RESET}')
 				playerScores.gameLost()
 				computerScores.gameWon()
 			elif computerAction == 'paper':
-				print(Style.GREEN + 'Scissors cuts Paper!' + Style.RESET)
+				print(f'{Style.GREEN}Scissors cuts Paper!{Style.RESET}')
 				playerScores.gameWon()
 				computerScores.gameLost()
 			elif computerAction == 'lizard':
-				print(Style.GREEN + 'Scissors decapitates Lizard!' + Style.RESET)
+				print(f'{Style.GREEN}Scissors decapitates Lizard!{Style.RESET}')
 				playerScores.gameWon()
 				computerScores.gameLost()
 			else:
-				print(Style.RED + 'Spock smashes Scissors!' + Style.RESET)
+				print(f'{Style.RED}Spock smashes Scissors!{Style.RESET}')
 				playerScores.gameLost()
 				computerScores.gameWon()
 		elif userAction == 'lizard':
 			if computerAction == 'rock':
-				print(Style.RED + 'Rock crushes Lizard' + Style.RESET)
+				print(f'{Style.RED}Rock crushes Lizard{Style.RESET}')
 				playerScores.gameLost()
 				computerScores.gameWon()
 			elif computerAction == 'paper':
-				print(Style.RED + 'Lizard  eats Paper!' + Style.RESET)
+				print(f'{Style.RED}Lizard  eats Paper!{Style.RESET}')
 				playerScores.gameLost()
 				computerScores.gameWon()
 			elif computerAction == 'scissors':
-				print(Style.RED + 'Scissors decapitates Lizard!' + Style.RESET)
+				print(f'{Style.RED}Scissors decapitates Lizard!{Style.RESET}')
 				playerScores.GameLost()
 				computerScores.gameWon()
 			else:
-				print(Style.GREEN + 'Lizard poisons Spock' + Style.RESET)
+				print(f'{Style.GREEN}Lizard poisons Spock!{Style.RESET}')
 				playerScores.gameWon()
 				computerScores.gameLost()
 		elif userAction == 'spock':
 			if computerAction == 'rock':
-				print(Style.GREEN + 'Spock vaporizes Rock!' + Style.RESET)
+				print(f'{Style.GREEN}Spock vaporizes Rock!{Style.RESET}')
 				playerScores.gameWon()
 				computerScores.gameLost()
 			elif computerAction == 'paper':
-				print(Style.RED + 'Paper disaproves Spock!' + Style.RESET)
+				print(f'{Style.RED}Paper disaproves Spock!{Style.RESET}')
 				playerScores.gameLost()
 				computerScores.gameWon()
 			elif computerAction == 'scissors':
-				print(Style.GREEN + 'Spock smashes Scissors!' + Style.RESET)
+				print(f'{Style.GREEN}Spock smashes Scissors!{Style.RESET}')
 				playerScores.gameWon()
 				computerScores.gameLost()
 			else:
-				print(Style.RED + 'Lizard poisons Spock!' + Style.RESET)
+				print(f'{Style.RED}Lizard poisons Spock!{Style.RESET}')
 				playerScores.gameLost()
 				computerScores.gameWon()
 
@@ -254,12 +254,12 @@ def gameCalculations(choices, totalGames):
 
 
 def currentScores():
-	print(Style.YELLOW + 'Player Scores\t\t\tComputer Scores' + Style.RESET)
-	print('Games Won: ' + Style.GREEN + str(playerScores.getGamesWon()) + Style.RESET + '\t\t\tGames Won: ' + Style.GREEN + str(computerScores.getGamesWon()) + Style.RESET)
-	print('Games Lost: ' + Style.RED + str(playerScores.getGamesLost()) + Style.RESET + '\t\t\tGames Lost: ' + Style.RED + str(computerScores.getGamesLost()) + Style.RESET)
-	print('Games Tied: ' + Style.YELLOW + str(playerScores.getGamesTied()) + Style.RESET + '\t\t\tGames Tied: ' + Style.YELLOW + str(computerScores.getGamesTied()) + Style.RESET)
+	print(f'{Style.YELLOW}Player Scores\t\t\tComputer Scores{Style.RESET}')
+	print(f'Games Won: {Style.GREEN}{str(playerScores.getGamesWon())}{Style.RESET} \t\t\tGames Won: {Style.GREEN}{str(computerScores.getGamesWon())}{Style.RESET}')
+	print(f'Games Lost: {Style.RED}{str(playerScores.getGamesLost())}{Style.RESET} \t\t\tGames Lost: {Style.RED}{str(computerScores.getGamesLost())}{Style.RESET}')
+	print(f'Games Tied: {Style.YELLOW}{str(playerScores.getGamesTied())}{Style.RESET} \t\t\tGames Tied: {Style.YELLOW}{str(computerScores.getGamesTied())}{Style.RESET}')
 
-	input('Press Enter to Continue...')
+	input('Press Enter to Exit...')
 
 
 def clearConsole():

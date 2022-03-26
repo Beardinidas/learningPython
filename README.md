@@ -3,16 +3,17 @@
 All projects have been created with Python v3.10 in mind unless specified otherwise  
 
 
+
 # Completed
 Guess the Number Game (User)  
 Guess the Number Game (Computer)  
 Rock, Paper, Scissors  
 Hangman  (python v3.9)  
 MadLibs  
+Countdown Timer  
 
 
 # TODO
-Countdown Timer  
 Password Generator  
 QR code encoder / decoder  
 Tic-Tac-Toe  

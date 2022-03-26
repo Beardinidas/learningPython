@@ -1,6 +1,6 @@
 # learningPython
 
-All projects have been created with Python v3.10 in mind unless specified otherwise  
+All projects have been created with Python v3.9.2 in mind unless specified otherwise  
 
 
 
@@ -8,13 +8,13 @@ All projects have been created with Python v3.10 in mind unless specified otherw
 Guess the Number Game (User)  
 Guess the Number Game (Computer)  
 Rock, Paper, Scissors  
-Hangman  (python v3.9)  
+Hangman  
 MadLibs  
 Countdown Timer  
+Password Generator  
 
 
 # TODO
-Password Generator  
 QR code encoder / decoder  
 Tic-Tac-Toe  
 Tic-Tac-Toe AI  

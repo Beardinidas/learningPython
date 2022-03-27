@@ -226,7 +226,7 @@ def gameCalculations(choices, totalGames):
 				computerScores.gameWon()
 			elif computerAction == 'scissors':
 				print(f'{Style.RED}Scissors decapitates Lizard!{Style.RESET}')
-				playerScores.GameLost()
+				playerScores.gameLost()
 				computerScores.gameWon()
 			else:
 				print(f'{Style.GREEN}Lizard poisons Spock!{Style.RESET}')

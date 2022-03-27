@@ -1,4 +1,4 @@
-##!/usr/bin/python
+#!/usr/bin/python
 
 import random
 import os
@@ -47,11 +47,11 @@ def qrEncode():
 		qrCodeImg = qrcode.make(data)
 		type(qrCodeImg)
 		#Save the QRCode into the encode Folder
-		qrCodeImg.save(f'./qrs/encode/qrCode_{uts}.png')
+		qrCodeImg.save(f'./qrs/encode/images/qrCode_{uts}.png')
 
 		#Write QRCode Image file name and Data Encoded to txt file in Encode Folder
 		#This will Create the qrCodeData File if it Does Not Exist and Append Data to the end
-		with open('./qrs/encode/qrCodeData.txt', 'a') as f:
+		with open('./qrs/encode/images/qrCodeData.txt', 'a') as f:
 			f.write(f'qrCode_{uts}: {data}\n')
 
 		clearConsole()
@@ -59,13 +59,35 @@ def qrEncode():
 
 
 def qrDecode():
+	path = './qrs/decode/images'
 	clearConsole()
 	print('DECODE')
 	print(f'{Style.RED}Please Ensure your QR Data Files are In the Correct Folder!{Style.RESET}')
-	print(f'Note only {Style.GREEN}.png{Style.RESET} are supported')
+	#print(f'Note only {Style.GREEN}.png{Style.RESET} are supported')
 	input('Press Enter to Continue')
+	clearConsole()
+	print('Reading Files...')
 
-	print('TODO')
+	#Get list of names
+	imageList = os.listdir(path)
+
+	#Read Each image in Array to Process
+	for qr in range(len(imageList)):
+		qrImage = cv2.imread(imageList[qr])
+		#Load QRCode Detector
+		qrDetector = cv2.QRCodeDetector()
+
+		#Decode
+		data, verticesArray, qrCode = detector.detectAndDecode(qrImage)
+
+		#If QRCode is Detected
+		if verticesArray is not None:
+			with open(f'{path}/qrCodeData.txt', 'a') as f:
+				f.write(f'{imageList[qr]}: {data}')
+		else:
+			with open(f'{path}/qrCodeData.txt', 'a') as f:
+                                f.write(f'{imageList[qr]}: Error!')
+
 
 
 def clearConsole():

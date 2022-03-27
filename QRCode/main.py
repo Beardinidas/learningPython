@@ -4,7 +4,7 @@ import random
 import os
 import qrcode
 import time
-
+import cv2
 
 class Style:
 	RESET = '\033[0m'

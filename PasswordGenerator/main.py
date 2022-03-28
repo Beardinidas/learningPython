@@ -34,8 +34,8 @@ def main():
 		passwordLength = passwordLength
 
 	password = generatePassword(passwordLength)
-
-	print(f'{password}')
+	clearConsole()
+	print(f'Your Password is: {Style.YELLOW}{password}{Style.RESET}')
 
 
 def generatePassword(passwordLength):

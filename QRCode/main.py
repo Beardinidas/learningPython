@@ -63,31 +63,33 @@ def qrDecode():
 	clearConsole()
 	print('DECODE')
 	print(f'{Style.RED}Please Ensure your QR Data Files are In the Correct Folder!{Style.RESET}')
-	#print(f'Note only {Style.GREEN}.png{Style.RESET} are supported')
+	print(f'Note only {Style.GREEN}.png{Style.RESET} are supported')
 	input('Press Enter to Continue')
 	clearConsole()
 	print('Reading Files...')
 
-	#Get list of names
-	imageList = os.listdir(path)
+	#Get list of PNGs
+	imgList = os.listdir(path)
+	for file in imgList[:]:
+		if not(file.endswith('.png')):
+			imgList.remove(file)
 
-	#Read Each image in Array to Process
-	for qr in range(len(imageList)):
-		qrImage = cv2.imread(imageList[qr])
+
+	#Iterate through image list
+	for qr in range(len(imgList)):
+		qrCode = cv2.imread(f'{path}/{imgList[qr]}')
 		#Load QRCode Detector
 		qrDetector = cv2.QRCodeDetector()
 
 		#Decode
-		data, verticesArray, qrCode = detector.detectAndDecode(qrImage)
+		data, points, _ = qrDetector.detectAndDecode(qrCode)
 
-		#If QRCode is Detected
-		if verticesArray is not None:
+		if points is not None:
 			with open(f'{path}/qrCodeData.txt', 'a') as f:
-				f.write(f'{imageList[qr]}: {data}')
+				f.write(f'{imgList[qr]}: {data}\n')
 		else:
 			with open(f'{path}/qrCodeData.txt', 'a') as f:
-                                f.write(f'{imageList[qr]}: Error!')
-
+				f.write(f'{imgList[qr]}: Error!\n')
 
 
 def clearConsole():

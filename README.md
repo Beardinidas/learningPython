@@ -3,7 +3,6 @@
 All projects have been created with Python v3.9.2 in mind unless specified otherwise  
 
 
-
 # Completed
 Guess the Number Game (User)  
 Guess the Number Game (Computer)  
@@ -12,10 +11,10 @@ Hangman
 MadLibs  
 Countdown Timer  
 Password Generator  
+QRCode Encoder/Decoder  
 
 
 # TODO
-QR code encoder / decoder  
 Tic-Tac-Toe  
 Tic-Tac-Toe AI  
 Binary Search  

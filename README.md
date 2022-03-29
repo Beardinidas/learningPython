@@ -12,6 +12,7 @@ MadLibs
 Countdown Timer  
 Password Generator  
 QRCode Encoder/Decoder  
+Bulk File Renamer  
 
 
 # TODO
@@ -28,7 +29,6 @@ Connect Four
 Tetris  
 Online Multiplayer Game  
 Web Scraping Program  
-Bulk file renamer  
 Weather Program  
 Code a Discord Bot with Python - Host for Free in the Cloud  
 Space invaders game  
